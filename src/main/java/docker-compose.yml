@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+  mysqldb:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: rootUser
+      MYSQL_PASSWORD: 123123123123
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-db:/var/lib/mysql
+  postgresdb:
+    image: postgres:14.1-alpine
+    container_name: postgresDB
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123123123123
+    ports:
+      - '5432:5432'
+
+  mssqldb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssqlDB
+    restart: always
+    hostname: mssqlDB
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "123123123123"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssqldata:/var/opt/mssql/data
+
+volumes:
+  my-db:
+  mssqldata:
