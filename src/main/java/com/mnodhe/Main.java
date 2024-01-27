@@ -7,7 +7,7 @@ public class Main {
         telusko.setAname("navin");
         telusko.setColor("Green");
 
-        Session
+
 
     }
 }
