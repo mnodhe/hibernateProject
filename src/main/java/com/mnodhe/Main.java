@@ -27,7 +27,7 @@ public class Main {
         student.setName("Navin");
         student.setMarks(1);
         student.setRollNo(50);
-        student.setLaptop(laptop);
+        student.getLaptop().add(laptop);
 
         Configuration con = new Configuration().configure()
                 .addAnnotatedClass(Student.class)
