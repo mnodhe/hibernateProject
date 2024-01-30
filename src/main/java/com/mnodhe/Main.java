@@ -21,13 +21,13 @@ public class Main {
 
         Laptop laptop = new Laptop();
         laptop.setLid(101);
-        laptop.setLName("Dell");
-
+        laptop.setlName("Dell");
         Student student = new Student();
         student.setName("Navin");
         student.setMarks(1);
         student.setRollNo(50);
         student.getLaptop().add(laptop);
+        laptop.getStudent().add(student);
 
         Configuration con = new Configuration().configure()
                 .addAnnotatedClass(Student.class)

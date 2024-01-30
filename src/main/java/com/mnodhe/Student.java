@@ -1,9 +1,6 @@
 package com.mnodhe;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +11,7 @@ public class Student {
     private int rollNo;
     private int marks;
     private String name;
-    @OneToMany
+    @ManyToMany(mappedBy = "student")
     private List<Laptop> laptop=new ArrayList<Laptop>();
 
     public void setLaptop(List<Laptop> laptop) {
