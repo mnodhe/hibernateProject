@@ -19,30 +19,36 @@ public class Main {
 //        telusko.setAname(aname);
 
 
-        Laptop laptop = new Laptop();
-        laptop.setLid(101);
-        laptop.setlName("Dell");
-        Student student = new Student();
-        student.setName("Navin");
-        student.setMarks(1);
-        student.setRollNo(50);
-        student.getLaptop().add(laptop);
-        laptop.getStudent().add(student);
+//        Laptop laptop = new Laptop();
+//        laptop.setLid(101);
+//        laptop.setlName("Dell");
+//        Student student = new Student();
+//        student.setName("Navin");
+//        student.setMarks(1);
+//        student.setRollNo(50);
+//        student.getLaptop().add(laptop);
+//        laptop.getStudent().add(student);
 
         Configuration con = new Configuration().configure()
                 .addAnnotatedClass(Student.class)
-                .addAnnotatedClass(Laptop.class);
+                .addAnnotatedClass(Laptop.class)
+                .addAnnotatedClass(Alien.class);
 
         SessionFactory sf = con.buildSessionFactory();
 
         Session session = sf.openSession();
 
-        Transaction tx = session.beginTransaction();
+        session.beginTransaction();
 
+        Alien alien = new Alien();
+        alien.setAname("Navin");
+        alien.setAid(1);
+        alien.setColor("Green");
+        System.out.println("Hi");
 
-        session.save(laptop);
-        session.save(student);
-        tx.commit();
+//        session.save(laptop);
+//        session.save(student);
+        session.getTransaction().commit();
 //        telusko =session.get(Alien.class,101);
 
 //        session.save(telusko);

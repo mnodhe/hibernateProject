@@ -13,6 +13,8 @@ public class Laptop {
     @Id
     private int lid;
     private String lName;
+    @ManyToOne
+    private Alien alien;
     @ManyToMany
     private List<Student> student = new ArrayList<Student>();
 

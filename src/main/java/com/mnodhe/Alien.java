@@ -2,20 +2,39 @@ package com.mnodhe;
 
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Cache;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "alien_table")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Alien {
      @Id
      private int aid;
-     private AlienName aname;
+     private String aname;
 
-    public void setAname(AlienName aname) {
-        this.aname = aname;
+    public Collection<Laptop> getLaps() {
+        return laps;
     }
 
-    public AlienName getAname() {
+    public void setLaps(Collection<Laptop> laps) {
+        this.laps = laps;
+    }
+
+    @OneToMany(mappedBy = "alien")
+
+     private Collection<Laptop> laps = new ArrayList<Laptop>();
+
+    public String getAname() {
         return aname;
+    }
+
+    public void setAname(String aname) {
+        this.aname = aname;
     }
 
     @Column(name ="alien_color")
